@@ -1,0 +1,2 @@
+# Ignore secret settings file
+/private_settings.py

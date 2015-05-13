@@ -1,0 +1,13 @@
+# Ignore precompiled python code
+*.pyc
+
+# Ignore Eclipse project files
+/.project
+/.pydevproject
+/.settings/
+
+# Ignore venv
+/venv/
+
+# Ignore the sqlite test database
+/db.sqlite3
