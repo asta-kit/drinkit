@@ -1,0 +1,61 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'admin:reckoning' %}" method="post">
+{% csrf_token %}
+{{ formset.management_form }}
+
+<table>
+
+<thead>
+<tr><th colspan="2">Name</th>
+<th>Aktiv</th>
+{% for drink in drinks %}
+    <th>{{ drink.name }} {{ drink.price }} €</th>
+{% endfor %}
+<th>E-Mailaddresse</th>
+</tr>
+</thead>
+
+<tbody>
+{% for form in formset %}
+{{ form.non_field_errors }}
+<tr>
+{{ form.id }}
+
+{% if form.instance.firstname %}
+    <th colspan="2">{{ form.instance.fullname }}
+    {{ form.firstname.errors }} {{ form.firstname.as_hidden }}
+    {{ form.lastname.errors }} {{ form.lastname.as_hidden }}
+    </th>
+{% else %}
+    <th>{{ form.firstname.errors }} {{ form.firstname.label_tag }} {{ form.firstname }}</th>
+    <th>{{ form.lastname.errors }} {{ form.lastname.label_tag }} {{ form.lastname }}</th>
+{% endif %}
+
+    <td>{{ form.active.errors }} {{ form.active }}</td>
+    {% for field in form %}
+        {% for drink in drinks %}
+            {% ifequal field.name|cut:'drink' drink.pk|stringformat:'d' %}
+                <td>{{ field.errors }} {{ field }}</td>
+            {% endifequal %}
+        {% endfor %}
+    {% endfor %}
+
+{% if form.instance.email %}
+    <td>{{ form.instance.email }}
+    {{ form.email.errors }} {{ form.email.as_hidden }}
+    </td>
+{% else %}
+    <td>{{ form.email.errors }} {{ form.email.label_tag }} {{ form.email }}</td>
+{% endif %}
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+<input type="submit" value="Abrechnen" />
+</form>
+{% endblock content %}

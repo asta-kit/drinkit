@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from datetime import date
 
 class Drink(models.Model):
     name = models.CharField(max_length=255)
@@ -34,7 +35,7 @@ class Drinker(models.Model):
 
 class Transaction(models.Model):
     drinker = models.ForeignKey(Drinker)
-    date = models.DateField()
+    date = models.DateField(default=date.today)
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     reckoning = models.ManyToManyField(Drink, through='Consumption')
 
