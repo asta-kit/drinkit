@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.conf.urls import url
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.db import models
 from django import forms
 from django.forms.models import BaseModelFormSet, modelformset_factory
@@ -49,7 +49,6 @@ class DrinkitAdminSite(admin.AdminSite):
                     form.save()
                     transaction = form.instance.transaction_set.create(amount=Decimal(0))
                     for drink in params['drinks']:
-                        print(form.cleaned_data)
                         count = form.cleaned_data['drink{}'.format(drink.pk)]
                         if not count:
                             continue
@@ -60,6 +59,8 @@ class DrinkitAdminSite(admin.AdminSite):
                             count=count,
                         )
                         consumption.save()
+
+                messages.success(request, 'Abrechnung erfolgreich.')
 
                 return HttpResponseRedirect('/admin/drinkit/drinker/')
         else:
