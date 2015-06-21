@@ -37,10 +37,11 @@ class Transaction(models.Model):
     drinker = models.ForeignKey(Drinker)
     date = models.DateField(default=date.today)
     amount = models.DecimalField(max_digits=6, decimal_places=2)
+    comment = models.CharField(blank=True, max_length=255)
     reckoning = models.ManyToManyField(Drink, through='Consumption')
 
     def __str__(self):
-        return '{} -> {}: {} €'.format(self.date, self.drinker, self.amount)
+        return '{} -> {}: {} € — {}'.format(self.date, self.drinker, self.amount, self.comment)
 
     def save(self, *args, **kwargs):
         consumption = self.consumption_set.all()
