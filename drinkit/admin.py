@@ -32,7 +32,7 @@ class DrinkitAdminSite(admin.AdminSite):
     def get_urls(self):
         urls = super().get_urls()
         my_urls = [
-            url(r'^reckoning/$', self.admin_view(self.reckoning_view), name='reckoning'),
+            url(r'^drinkit/reckoning/$', self.admin_view(self.reckoning_view), name='reckoning'),
         ]
         return my_urls + urls
 
@@ -68,7 +68,7 @@ class DrinkitAdminSite(admin.AdminSite):
 
         #return HttpResponse(str(formset[0]['drink1'].name))
         params['formset'] = formset
-        return render(request, 'drinkit/reckoning.html', params)
+        return render(request, 'admin/drinkit/reckoning.html', params)
 
 admin_site = DrinkitAdminSite()
 
