@@ -44,6 +44,7 @@ class Command(BaseCommand):
                 firstname = line[0].strip(),
                 lastname = line[1].strip(),
                 email = line[2].strip(),
+                active=False,
             )
             drinker.save()
             print(drinker)

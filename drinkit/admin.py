@@ -90,6 +90,17 @@ class BalanceFilter(admin.SimpleListFilter):
         if self.value():
             return queryset.annotate(_balance=models.Sum('transaction__amount')).filter(_balance__lt=self.value())
 
+# Actions
+def activate(modeladmin, request, queryset):
+    for drinker in queryset:
+        drinker.active = True
+        drinker.save()
+
+def deactivate(modeladmin, request, queryset):
+    for drinker in queryset:
+        drinker.active = False
+        drinker.save()
+
 @admin.register(Drinker, site=admin_site)
 class DrinkerAdmin(admin.ModelAdmin):
     inlines = (TransactionInline,)
@@ -99,13 +110,15 @@ class DrinkerAdmin(admin.ModelAdmin):
         qs = qs.annotate(_balance=models.Sum('transaction__amount'))
         return qs
 
-    def balance(self, drinker):
+    @staticmethod
+    def balance(drinker):
         return drinker._balance
     balance.admin_order_field = '_balance'
 
     list_display = ('firstname', 'lastname', 'balance', 'active')
     list_filter = ('active', BalanceFilter)
     search_fields = ('firstname', 'lastname', 'email')
+    actions = (activate, deactivate)
 
 
 class ConsumptionInline(admin.TabularInline):
