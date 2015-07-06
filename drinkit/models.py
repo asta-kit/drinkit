@@ -7,11 +7,12 @@ class Drink(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     active = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ('price',)
+
     def __str__(self):
         return self.name
 
-    class Meta:
-        ordering = ('price',)
 
 class Drinker(models.Model):
     firstname = models.CharField(max_length=20)
@@ -27,11 +28,12 @@ class Drinker(models.Model):
     def balance(self):
         return self.transaction_set.aggregate(balance=models.Sum('amount'))['balance']
 
+    class Meta:
+        ordering = ('firstname', 'lastname')
+
     def __str__(self):
         return self.fullname
 
-    class Meta:
-        ordering = ('firstname', 'lastname')
 
 class Transaction(models.Model):
     drinker = models.ForeignKey(Drinker)
@@ -39,6 +41,9 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     comment = models.CharField(blank=True, max_length=255)
     reckoning = models.ManyToManyField(Drink, through='Consumption')
+
+    class Meta:
+        ordering = ('-date', 'drinker')
 
     def __str__(self):
         return '{} -> {}: {} € — {}'.format(self.date, self.drinker, self.amount, self.comment)
@@ -51,18 +56,16 @@ class Transaction(models.Model):
                 self.amount -= c.count * c.drink.price
         return super().save(*args, **kwargs)
 
-    class Meta:
-        ordering = ('-date', 'drinker')
 
 class Consumption(models.Model):
     drink = models.ForeignKey(Drink)
     transaction = models.ForeignKey(Transaction)
     count = models.PositiveSmallIntegerField()
 
+    class Meta:
+        unique_together = ('drink', 'transaction')
+
     def save(self, *args, **kwargs):
         res = super().save(*args, **kwargs)
         self.transaction.save()
         return res
-
-    class Meta:
-        unique_together = ('drink', 'transaction')
