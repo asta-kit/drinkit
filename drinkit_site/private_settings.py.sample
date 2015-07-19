@@ -4,6 +4,9 @@
 import os
 from .settings import BASE_DIR
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
