@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # We keep things like passwords in a separate file not checked into version control
 from .private_settings import * # @UnusedWildImport
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['drinkit.asta-kit.de','localhost']
 
 
 # Application definition
