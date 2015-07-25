@@ -11,3 +11,6 @@
 
 # Ignore the sqlite test database
 /db.sqlite3
+
+# Ignore directory for static files
+/static/
