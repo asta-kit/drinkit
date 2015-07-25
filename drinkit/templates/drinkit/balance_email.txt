@@ -1,6 +1,4 @@
-{% autoescape off %}
-Hallo {{ drinker.firstname }},
-
+{% autoescape off %}Hallo {{ drinker.firstname }},
 {% if drinker.balance > 0 %}
 du hast im AStA im Moment ein Getränkeguthaben in Höhe von {{ drinker.balance }} €.
 
@@ -44,7 +42,6 @@ Falls du gerade finanziell nicht so flüssig bist, dann rede doch einfach kurz
 mit mir oder schreibe mir eine E-Mail, dann finden wir bestimmt auch dafür eine
 Lösung.
 {% endif %}
-
 
 Verwendungszweck: Getränkekasse {{ drinker.firstname }} {{ drinker.lastname }}
 Empfänger: UStA Kasse Karlsruhe e.V.
