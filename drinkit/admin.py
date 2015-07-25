@@ -2,11 +2,13 @@ from decimal import Decimal
 
 from django.conf.urls import url
 from django.contrib import admin, messages
+from django.core.mail import send_mass_mail
 from django.db import models
 from django import forms
 from django.forms.models import BaseModelFormSet, modelformset_factory
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.template import loader
 
 from .models import Drink, Drinker, Transaction, Consumption
 
@@ -101,6 +103,28 @@ def deactivate(modeladmin, request, queryset):
         drinker.active = False
         drinker.save()
 
+def send_balance_email(modeladmin, request, queryset):
+    emails = []
+    template = loader.get_template('drinkit/balance_email.txt')
+
+    for drinker in queryset:
+        message = template.render({'drinker':drinker})
+        emails.append((
+            'AStA-Getränkeabrechnung',
+            message,
+            'getraenke@asta-kit.de',
+            [drinker.email],
+        ))
+
+    num = send_mass_mail(emails)
+    if num == len(emails):
+        messages.success(request, 'E-Mails erfolgreich verschickt')
+    else:
+        messages.error(
+            request,
+            '{} E-Mails konnten nicht erfolgreich verschickt werden'.format(len(emails) - num),
+        )
+
 @admin.register(Drinker, site=admin_site)
 class DrinkerAdmin(admin.ModelAdmin):
     inlines = (TransactionInline,)
@@ -118,7 +142,7 @@ class DrinkerAdmin(admin.ModelAdmin):
     list_display = ('firstname', 'lastname', 'balance', 'active')
     list_filter = ('active', BalanceFilter)
     search_fields = ('firstname', 'lastname', 'email')
-    actions = (activate, deactivate)
+    actions = (activate, deactivate, send_balance_email)
 
 
 class ConsumptionInline(admin.TabularInline):

@@ -1,0 +1,68 @@
+{% autoescape off %}
+Hallo {{ drinker.firstname }},
+
+{% if drinker.balance > 0 %}
+du hast im AStA im Moment ein Getränkeguthaben in Höhe von {{ drinker.balance }} €.
+
+Danke, dass du deine Getränke auf Guthabenbasis trinkst.
+
+Wenn du dein Guthaben ausbezahlt haben möchtest, dann wende dich doch am besten
+per E-Mail an mich und schicke mir auch deine Kontodaten, damit ich das
+veranlassen kann.
+
+Wenn du mehr Guthaben überweisen willst, dann bitte an folgende Bankverbindung:
+{% elif drinker.balance > -100 %}
+du hast im AStA im Moment Getränkeschulden in Höhe von {{ drinker.credit }} €.
+
+Bitte überweise das Geld so bald wie möglich an die unten stehende
+Bankverbindung.
+
+Pro-Tipp: Du kannst auch mehr Geld überweisen. Das geht dann nicht verloren,
+sondern wird dir als Guthaben für zukünftige Getränke geführt und du bekommst
+das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA rumhängst.
+Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und gibt dir ein
+wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem Kühlschrank
+nimmst.
+{% else %}
+du hast im AStA im Moment Getränkeschulden in Höhe von {{ drinker.credit }} €.
+
+Das ist ziemlich viel Geld, auch für uns. Bitte zahle deine Schulden so bald
+wie möglich an die unten stehende Bankverbindung zurück.
+
+Pro-Tipp: Wenn du das Problem hast, dass immer wenn die Abrechnung kommt so viel
+Geld ansteht und du viel lieber jeden Monat einen kleineren Betrag zahlen
+würdest, dann richte doch bei deiner Bank einen Dauerauftrag für den ungefähren
+Betrag den du jeden Monat trinkst ein. Das geht meistens ganz einfach und falls
+es doch mal zu viel sein sollte, dann verfällt das Geld auch nicht einfach
+sondern wird dir als Guthaben für zukünftige Getränke geführt und du bekommst
+das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA rumhängst.
+Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und gibt dir ein
+wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem Kühlschrank
+nimmst.
+
+Falls du gerade finanziell nicht so flüssig bist, dann rede doch einfach kurz
+mit mir oder schreibe mir eine E-Mail, dann finden wir bestimmt auch dafür eine
+Lösung.
+{% endif %}
+
+
+Verwendungszweck: Getränkekasse {{ drinker.firstname }} {{ drinker.lastname }}
+Empfänger: UStA Kasse Karlsruhe e.V.
+IBAN: DE92660501010010055861
+BIC: KARSDE66XXX
+Bank: Sparkasse Karlsruhe
+
+
+--
+Viele Grüße
+Michael Tänzer
+
+Getränkeheini
+AStA am KIT / UStA Kasse Karlsruhe e.V.
+Adenauerring 7
+76131 Karlsruhe
+
+Tel.: 0721/608-48460
+Fax: 0721/608-48470
+E-Mail: getraenke@asta-kit.de
+{% endautoescape %}

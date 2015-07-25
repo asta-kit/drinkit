@@ -27,6 +27,9 @@ class Drinker(models.Model):
     @property
     def balance(self):
         return self.transaction_set.aggregate(balance=models.Sum('amount'))['balance']
+    @property
+    def credit(self):
+        return -self.balance
 
     class Meta:
         ordering = ('firstname', 'lastname')
