@@ -16,11 +16,11 @@ Bitte überweise das Geld so bald wie möglich an die unten stehende
 Bankverbindung.
 
 Pro-Tipp: Du kannst auch mehr Geld überweisen. Das geht dann nicht verloren,
-sondern wird dir als Guthaben für zukünftige Getränke geführt und du bekommst
-das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA rumhängst.
-Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und gibt dir ein
-wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem Kühlschrank
-nimmst.
+sondern wird dir als Guthaben für zukünftige Getränke angerechnet und du
+bekommst das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA
+rumhängst. Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und
+gibt dir ein wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem
+Kühlschrank nimmst.
 {% else %}
 du hast im AStA im Moment Getränkeschulden in Höhe von {{ drinker.credit }} €.
 
@@ -32,11 +32,11 @@ Geld ansteht und du viel lieber jeden Monat einen kleineren Betrag zahlen
 würdest, dann richte doch bei deiner Bank einen Dauerauftrag für den ungefähren
 Betrag den du jeden Monat trinkst ein. Das geht meistens ganz einfach und falls
 es doch mal zu viel sein sollte, dann verfällt das Geld auch nicht einfach
-sondern wird dir als Guthaben für zukünftige Getränke geführt und du bekommst
-das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA rumhängst.
-Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und gibt dir ein
-wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem Kühlschrank
-nimmst.
+sondern wird dir als Guthaben für zukünftige Getränke angerechnet und du
+bekommst das Restguthaben überwiesen, wenn du irgendwann nicht mehr im AStA
+rumhängst. Damit hilfst du uns die Vereinskasse nicht zu sehr zu belasten und
+gibt dir ein wohliges Gefühl wenn du dir das nächste Mal ein Getränk aus dem
+Kühlschrank nimmst.
 
 Falls du gerade finanziell nicht so flüssig bist, dann rede doch einfach kurz
 mit mir oder schreibe mir eine E-Mail, dann finden wir bestimmt auch dafür eine
