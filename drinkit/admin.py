@@ -6,7 +6,7 @@ from django.core.mail import send_mass_mail
 from django.db import models
 from django import forms
 from django.forms.models import BaseModelFormSet, modelformset_factory
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 
@@ -68,7 +68,6 @@ class DrinkitAdminSite(admin.AdminSite):
         else:
             formset = ReckoningFormSet()
 
-        #return HttpResponse(str(formset[0]['drink1'].name))
         params['formset'] = formset
         return render(request, 'admin/drinkit/reckoning.html', params)
 
