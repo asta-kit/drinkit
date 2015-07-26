@@ -77,6 +77,11 @@ admin_site = DrinkitAdminSite()
 class DrinkAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'active')
 
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            # existing Drink
+            return self.readonly_fields + ('price',)
+        return self.readonly_fields
 
 class TransactionInline(admin.TabularInline):
     model = Transaction
