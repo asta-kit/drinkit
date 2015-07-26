@@ -5,6 +5,7 @@
 {% block extrahead %}
 {{ block.super }}
 <script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}" ></script>
+<script type="text/javascript" src="{% static 'drinkit/js/jquery.sticky.js' %}" ></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery(window).keydown(function(event){
@@ -13,6 +14,7 @@
                 return false;
             }
         });
+        jQuery('#reckoning').sticky();
     });
 </script>
 {% endblock %}
@@ -24,7 +26,7 @@
 {% csrf_token %}
 {{ formset.management_form }}
 
-<table>
+<table id="reckoning">
 
 <thead>
 <tr><th colspan="2">Name</th>
