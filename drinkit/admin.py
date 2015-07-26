@@ -120,7 +120,7 @@ def send_balance_email(modeladmin, request, queryset):
             [drinker.email],
         ))
 
-    num = send_mass_mail(emails)
+    num = send_mass_mail(emails) or 0
     if num == len(emails):
         messages.success(request, 'E-Mails erfolgreich verschickt')
     else:
