@@ -133,8 +133,7 @@ class DrinkerAdmin(admin.ModelAdmin):
         qs = qs.annotate(_balance=models.Sum('transaction__amount'))
         return qs
 
-    @staticmethod
-    def balance(drinker):
+    def balance(self, drinker):
         return drinker._balance
     balance.admin_order_field = '_balance'
 
