@@ -6,8 +6,8 @@
 {{ block.super }}
 <script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}" ></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(window).keydown(function(event){
+    jQuery(document).ready(function() {
+        jQuery(window).keydown(function(event){
             if(event.keyCode == 13) {
                 event.preventDefault();
                 return false;
