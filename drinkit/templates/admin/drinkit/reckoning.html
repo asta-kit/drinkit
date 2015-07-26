@@ -31,8 +31,8 @@
     {{ form.lastname.errors }} {{ form.lastname.as_hidden }}
     </th>
 {% else %}
-    <th>{{ form.firstname.errors }} {{ form.firstname.label_tag }} {{ form.firstname }}</th>
-    <th>{{ form.lastname.errors }} {{ form.lastname.label_tag }} {{ form.lastname }}</th>
+    <th>{{ form.firstname.errors }} {{ form.firstname }}</th>
+    <th>{{ form.lastname.errors }} {{ form.lastname }}</th>
 {% endif %}
 
     <td>{{ form.active.errors }} {{ form.active }}</td>
