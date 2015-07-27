@@ -18,4 +18,5 @@ from drinkit.admin import admin_site
 
 urlpatterns = [
     url(r'^admin/', include(admin_site.urls)),
+    url(r'^', include('drinkit.urls', namespace='drinkit')),
 ]
