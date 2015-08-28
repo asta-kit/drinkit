@@ -120,7 +120,7 @@ def send_balance_email(modeladmin, request, queryset):
         if not drinker.email:
             messages.warning(request, '{} hat keine E-Mail-Adresse'.format(drinker))
             continue
-        message = template.render({'drinker':drinker})
+        message = template.render({'drinker':drinker, 'user':request.user})
         emails.append((
             'AStA-Getränkeabrechnung',
             message,
