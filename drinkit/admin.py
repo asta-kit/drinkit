@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.conf.urls import url
-from django.contrib import admin, messages
+from django.contrib import admin, auth, messages
 from django.core.mail import send_mass_mail
 from django.db import models
 from django import forms
@@ -72,6 +72,9 @@ class DrinkitAdminSite(admin.AdminSite):
         return render(request, 'admin/drinkit/reckoning.html', params)
 
 admin_site = DrinkitAdminSite()
+
+# Explicitly add admin interfaces for auth functionality
+admin_site.register(auth.models.User, auth.admin.UserAdmin)
 
 @admin.register(Drink, site=admin_site)
 class DrinkAdmin(admin.ModelAdmin):
