@@ -1,4 +1,6 @@
 Django>=1.8,<1.9
 django-static-jquery
+django-dbtemplates>=1.3.2
+django-reversion
 mysqlclient
 reportlab>=3,<4

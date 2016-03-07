@@ -24,6 +24,8 @@ from .private_settings import * # @UnusedWildImport
 
 ALLOWED_HOSTS = ['drinkit.asta-kit.de','localhost']
 
+SITE_ID = 1
+
 
 # Application definition
 
@@ -32,9 +34,12 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_static_jquery',
+    'reversion',
+    'dbtemplates',
     'drinkit',
 )
 
@@ -55,13 +60,17 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'dbtemplates.loader.Loader',
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },

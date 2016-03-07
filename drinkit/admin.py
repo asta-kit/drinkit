@@ -10,6 +10,8 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 
+import dbtemplates
+
 from .models import Drink, Drinker, Transaction, Consumption
 
 class BaseReckoningFormSet(BaseModelFormSet):
@@ -75,6 +77,8 @@ admin_site = DrinkitAdminSite()
 
 # Explicitly add admin interfaces for auth functionality
 admin_site.register(auth.models.User, auth.admin.UserAdmin)
+# Explicitly add admin interfaces for dbtemplates
+admin_site.register(dbtemplates.admin.Template, dbtemplates.admin.TemplateAdmin)
 
 @admin.register(Drink, site=admin_site)
 class DrinkAdmin(admin.ModelAdmin):
