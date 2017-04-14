@@ -36,6 +36,6 @@ Das Ding wurde 2015 von Michael Tänzer (aka Mimi) geschrieben. Der ist hoffentl
 
 Lizenz
 ------
-Wie es sich für dieses Projekt gehört, ist es so genannte Beer-Ware. Soll heißen, dass ihr damit machen könnt was auch immer ihr wollt, und wenn wir uns treffen und ihr das Projekt nützlich findet dann könnt ihr mir ja ein Bier ausgeben wenn ihr wollt. Da man in Deutschland Software nicht so einfach als Public Domain deklarieren kann, steht Drinkit formal unter der CC0-Lizenz, die dem noch am nächsten kommt. Die benutzten Libraries/Module unterliegen allerdings zum großen Teil anderen Lizenzen.
+Wie es sich für dieses Projekt gehört, ist es so genannte Beer-Ware. Soll heißen, dass ihr damit machen könnt was auch immer ihr wollt, und wenn wir uns treffen und ihr das Projekt nützlich findet dann könnt ihr mir ja ein Bier ausgeben wenn ihr wollt. Da man in Deutschland Software nicht so einfach als Public Domain deklarieren kann, steht Drinkit formal unter der CC0-Lizenz, die dem noch am nächsten kommt. Die benutzten Libraries/Module unterliegen allerdings zum großen Teil anderen Lizenzen. Dazu gehört auch die Library StickyTableHeaders (MIT-Lizenz) die aus Gründen des einfacheren Deployments direkt mit Drinkit ausgeliefert wird.
 
 Verbesserungsvorschläge, insbesondere in Form von Pull-Requests, werden gern entgegen genommen.

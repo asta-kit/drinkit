@@ -24,7 +24,7 @@
 {% block extrahead %}
 {{ block.super }}
 <script type="text/javascript" src="{% static 'static_jquery/js/jquery.js' %}" ></script>
-<script type="text/javascript" src="{% static 'drinkit/js/jquery.sticky.js' %}" ></script>
+<script type="text/javascript" src="{% static 'drinkit/js/jquery.stickytableheaders.js' %}" ></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery(window).keydown(function(event){
@@ -33,7 +33,7 @@
                 return false;
             }
         });
-        jQuery('#reckoning').sticky();
+        jQuery('#reckoning').stickyTableHeaders();
     });
 </script>
 {% endblock %}
