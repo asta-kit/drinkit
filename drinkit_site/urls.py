@@ -31,9 +31,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from django.views.generic.base import RedirectView
 from drinkit.admin import admin_site
 
 urlpatterns = [
     url(r'^admin/', include(admin_site.urls)),
     url(r'^', include('drinkit.urls', namespace='drinkit')),
+    # Catch-all to redirect back to the admin site. Make sure it is placed last
+    url(r'^.*$', RedirectView.as_view(pattern_name='admin:index', permanent=False))
 ]
