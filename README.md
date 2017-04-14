@@ -24,7 +24,7 @@ Wenn eine neue Django-Version erscheint sollte man folgendes tun:
 
 1. Virtualenv aktivieren: `source venv/bin/activate`
 2. Updates auflisten: `pip list -o`
-3. Updates installieren: `pip install -U Django`
+3. Updates installieren: `pip3 install --upgrade -r venv_requirements.txt`
 4. Static Files generieren: `./manage.py collectstatic`
 5. Dem Webserver mitteilen dass sich was geändert hat: `touch drinkit_site/settings.py`
 6. Virtualenv deaktivieren: `deactivate`
